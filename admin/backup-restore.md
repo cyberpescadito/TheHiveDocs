@@ -9,7 +9,17 @@ _Note_: you may have to adapt you indices in the examples below. To find the rig
 curl 'localhost:9200/_cat/indices?v'
 ```
 
-## 1. Create a snapshot repository
+## 1. Prerequisites
+
+-Add the following line with your own folder to your ElasticSearch configuration file (/etc/elasticsearch/elasticsearch.yml):
+path.repo: ["/absolute/path/to/backup/directory"]
+
+-Restart ElasticSearch service using the following command:
+service elasticsearch restart
+
+-Give Read, Write and eXecute permissions to your /absolute/path/to/backup/directory for ElasticSearch User
+
+## 2. Create a snapshot repository
 First you must define a location in local filesystem (where ElasticSearch instance runs) where the backup will be
 written. This repository must be declared in ElasticSearch configuration (elasticsearch.yml) by adding:
 ```
@@ -29,7 +39,7 @@ $ curl -XPUT 'http://localhost:9200/_snapshot/the_hive_backup' -d '{
 }'
 ```
 
-## 2. Backup your data
+## 3. Backup your data
 Start the backup by executing the following command :
 ```
 $ curl -XPUT 'http://localhost:9200/_snapshot/the_hive_backup/snapshot_1' -d '{
@@ -39,7 +49,7 @@ $ curl -XPUT 'http://localhost:9200/_snapshot/the_hive_backup/snapshot_1' -d '{
 You can backup the last index of TheHive (you can list indices in you ElasticSearch cluster with
 `curl -s http://localhost:9200/_cat/indices | cut -d ' '  -f3` ) or all indices with `_all` value.
 
-## 3. Restore data
+## 4. Restore data
 Restore will do the reverse actions : it reads backup in your snapshot directory and load indices in ElasticSearch
 cluster. This operation is done with this command :
 ```
