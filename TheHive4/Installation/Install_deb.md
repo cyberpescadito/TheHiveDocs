@@ -53,7 +53,7 @@ Apache Cassandra is a scalable and high available database. TheHive supports ver
 - Add Apache repository references
 
 ```bash
-curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 ```
 
