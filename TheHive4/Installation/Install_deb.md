@@ -395,7 +395,7 @@ The secret key is automatically generated and stored in `/etc/thehive/secret.con
 
 #### Database
 
-To use Cassandra database, TheHive configuration file (`/etc/thehive/conf/application.conf`) has to be edited and updated with following lines:
+To use Cassandra database, TheHive configuration file (`/etc/thehive/conf/application.conf`) has to be edited and you need to update the following lines:
 
 ```yaml
 db {
